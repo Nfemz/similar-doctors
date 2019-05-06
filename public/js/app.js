@@ -35,13 +35,21 @@ doctorForm.addEventListener("submit", e => {
       // Loops through array and displays doctors
       if (!res.error) {
         res.doctor.data.forEach(doctor => {
+          // Conditional to prevent error when doctor does not have a specialty
+          if (doctor.specialties.length == 0) {
+            specialty = "No specialty";
+          } else {
+            specialty = doctor.specialties[0].name;
+          }
+
+          // Sets list of doctors
           output += `
           <div id='doctor-box'>
             <h4 id="doctor-name">
               ${doctor.profile.first_name + " " + doctor.profile.last_name}
               </h4>
             <p id="doctor-special">
-              ${doctor.specialties[0].name}
+              ${specialty}
             </p>
             <p id="doctor-address">
               ${doctor.practices[0].visit_address.street +
