@@ -6,6 +6,7 @@ const doctors = require("./utils/doctors");
 
 // App Establishments and paths
 const app = express();
+const port = process.env.PORT || 3000; // Grabs port from what heroku sets; defaults to 3000
 const publicPath = path.join(__dirname, "../public");
 
 // Serve static page
@@ -46,7 +47,6 @@ app.get("/doctors", (req, res) => {
 });
 
 // Establish PORT
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log("Server is successfully running on port", PORT);
+app.listen(port, () => {
+  console.log("Server is successfully running on port", port);
 });

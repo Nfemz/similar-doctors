@@ -24,13 +24,13 @@ doctorForm.addEventListener("submit", e => {
   status.textContent = "Currently loading doctor data. Please wait...";
 
   // Fetch http response and render data
-  fetch("http://localhost:3000/doctors?address=" + location).then(response => {
+  fetch("/doctors?address=" + location).then(response => {
     response.json().then(res => {
       // Removes loading information
       status.textContent = "";
 
       // Default output
-      let output = `<h3>Displaying Nearest Doctors</h3>`;
+      let output = `<h3>Displaying Nearest Doctors: </h3>`;
 
       // Loops through array and displays doctors
       if (!res.error) {
